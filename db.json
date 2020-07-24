@@ -1,7 +1,7 @@
 { 
   "alarms": [
     {
-    alarmId: 1,
+    id: 1,
     alarmName: 'My alarm',
     metric: 'CPU',
     trigger: 80,
@@ -9,7 +9,7 @@
     source: 'SERVER 1'
     },
     {
-    alarmId: 2,
+    id: 2,
     alarmName: 'My other alarm',
     metric: 'MEMORY',
     trigger: 70,
