@@ -1,15 +1,15 @@
-import { MY_ACTION } from '../actions/alarmActions';
+import { SET_ALARMS } from '../actions/alarmActions';
 
 const initialState = {
-    myObj: undefined
+    alarms: undefined
 };
 
 function alarm(state = initialState, action) {
     switch (action.type) {
-        case MY_ACTION:
+        case SET_ALARMS:
             return {
                 ...state,
-                myObj: action.payload,
+                alarms: action.payload,
             }
         default:
             return state;

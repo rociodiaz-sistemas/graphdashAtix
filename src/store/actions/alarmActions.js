@@ -1,1 +1,17 @@
+
+export const GET_ALARMS = "GET_ALARMS";
 export const MY_ACTION = "MY_ACTION";
+
+export const SET_ALARMS = "SET_ALARMS";
+export const SET_SEARCHING_ALARMS = "SET_SEARCHING_ALARMS";
+export const SET_GET_ALARMS_ERROR = "SET_GET_ALARMS_ERROR";
+
+//MY ALARM ACTIONS
+export const CREATE_ALARM = "CREATE_ALARM";
+export const EDIT_ALARM = "EDIT_ALARM";
+export const DELETE_ALARM = "DELETE_ALARM";
+export const PAUSE_ALARM = "PAUSE_ALARM";
+export const RESUME_ALARM = "RESUME_ALARM";
+
+export const SET_SELECTED_ALARM = "SET_SELECTED_ALARM";
+export const SET_ALARM_NAME = "SET_ALARM_NAME";
