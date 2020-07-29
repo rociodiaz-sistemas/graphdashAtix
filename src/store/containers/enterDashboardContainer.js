@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { SET_ALARMS } from '../actions/alarmActions';
 import EnterDashboard from '../../components/App';
+import{push,replace}from'connected-react-router';
 
 const mapStateToProps = (state, ownProps) => {
     const { alarms } = state;
@@ -17,9 +18,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         enterDashboard: () => {
             dispatch({ type: SET_ALARMS })
         },
-        // redirectTo: () => {
-        //     dispatch({ type: SESSION_EXPIRED })
-        // },
+        redirectTo: (payload) => {
+            push('/' + payload)
+        },
     }
 }
 

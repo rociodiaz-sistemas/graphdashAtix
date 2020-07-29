@@ -7,6 +7,11 @@ export const api = {
     },
 };
 
+export const WIDGET_OPTIONS = [
+    { key: 1, text: 'Alarms', value: 'alarms', },
+    { key: 2, text: 'AnotherExample', value: 'another' },
+]
+
 export const httpMethods = {
     GET: 'get',
     POST: 'post',
