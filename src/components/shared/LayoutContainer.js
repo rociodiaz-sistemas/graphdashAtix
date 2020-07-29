@@ -6,6 +6,7 @@ import { Container, Grid, Segment } from 'semantic-ui-react';
 import TopBar from './TopBar';
 import PathsRouter from './pathsRouter';
 import Dashboard from '../dashboard/Dashboard';
+import DashboardContainer from '../../store/containers/DashboardContainer';
 const LayoutContainer = () => (
     <Container>
         <Grid columns='equal'>
@@ -16,7 +17,7 @@ const LayoutContainer = () => (
                 </Grid.Column>
                 <Grid.Column style={{ paddingRight: '0', width: '87.5%' }}>
                     <Switch>
-                        <Route exact path="/dashboard" render={() => (<Dashboard></Dashboard>)} />
+                        <Route exact path="/dashboard" render={() => (<DashboardContainer></DashboardContainer>)} />
                         {/* <Route render={() => (<div>Miss</div>)} /> */}
                     </Switch>
                 </Grid.Column>

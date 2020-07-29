@@ -1,8 +1,8 @@
 import { takeLatest } from 'redux-saga/effects';
-import { MY_ACTION } from '../actions/alarmActions';
-import { getMyAlarm } from './alarmWatcher';
+import { GET_WIDGETS } from '../actions/widgetActions';
+import { getWidgets } from './widgetWatcher';
 function* SagaWatcher() {
-    // yield takeLatest(MY_ACTION, getAlarm);
+    yield takeLatest(GET_WIDGETS, getWidgets);
 }
 
 export default SagaWatcher;

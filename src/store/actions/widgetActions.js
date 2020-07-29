@@ -1,0 +1,8 @@
+    //GET WIDGETS
+    export const GET_WIDGETS = "GET_WIDGETS";
+    export const SET_WIDGETS = "SET_WIDGETS";
+    export const SET_LOADING_WIDGETS= "SET_LOADING_WIDGETS";
+    export const SET_WIDGETS_ERROR= "SET_GET_WIDGETS_ERROR";
+    
+    ///MY WIDGET ACTIONS
+    export const CREATE_WIDGET= "CREATE_WIDGET";

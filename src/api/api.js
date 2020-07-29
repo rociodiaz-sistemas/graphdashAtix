@@ -7,3 +7,8 @@ export function getMyAlarms(payload) {
             return response;
         })
 }
+
+export function getMyWidgets(payload) {
+    let response = axios.get(`http://my-json-server.typicode.com/rociodiaz-sistemas/graphdash/widgets/`);
+    return response;
+}
