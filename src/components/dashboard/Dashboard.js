@@ -20,7 +20,7 @@ export default class Dashboard extends Component {
                 {this.props.hasNoWidgets ?
                     <SegmentPlaceholder addWidget={this.addWidget} />
 
-                : <Widgets widgets={this.props.widgets}/> }
+                : <Widgets widgets={this.props.widgets} activatedAlarms={this.props.activatedAlarms}/> }
             </Segment>
         );
     }

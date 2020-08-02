@@ -9,6 +9,7 @@ import LayoutContainer from './components/shared/LayoutContainer.js';
 import './App.css';
 import { GET_WIDGETS } from './store/actions/widgetActions';
 import { GET_ALARMS } from './store/actions/alarmActions';
+import { GET_INITIAL_INFO } from './store/actions/sharedActions';
 
 export default class App extends Component {
   history = createBrowserHistory();
@@ -17,12 +18,8 @@ export default class App extends Component {
 
   componentDidMount() {
     this.store.dispatch({
-      type: GET_WIDGETS,
+      type: GET_INITIAL_INFO,
     });
-
-    this.intervalID = setInterval(this.store.dispatch({
-      type: GET_ALARMS,
-    }).bind(this), 3000);
   }
 
   componentWillUnmount() {

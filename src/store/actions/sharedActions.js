@@ -1,0 +1,1 @@
+export const GET_INITIAL_INFO = "GET_INITIAL_INFO"

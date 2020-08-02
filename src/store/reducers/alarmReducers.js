@@ -1,8 +1,11 @@
-import { SET_ALARMS } from '../actions/alarmActions';
+import { SET_ALARMS, SET_LOADING_ALARMS, ACTIVATE_NOTIFICATION, REMOVE_NOTIFICATION } from '../actions/alarmActions';
 
 const initialState = {
     alarms: undefined,
-    notifications: {name: 'my alarm', trigger: '80%', metric: 'CPU'}
+    loadingAlarms: false,
+    notifications: undefined,
+    alarmCounter: 0,
+    activatedNotes: false,
 };
 
 function alarm(state = initialState, action) {
@@ -11,7 +14,24 @@ function alarm(state = initialState, action) {
             return {
                 ...state,
                 alarms: action.payload,
-                notifications: action.payload.filter(alarm => alarm.status === true)
+                notifications: action.payload.filter(alarm => alarm.status === true),
+                alarmCounter: action.payload.filter(alarm => alarm.status === true).length,
+                activatedNotes: action.payload.filter(alarm => alarm.status === true)
+            }
+        case SET_LOADING_ALARMS:
+            return {
+                ...state,
+                loadingAlarms: action.payload
+            }
+        case ACTIVATE_NOTIFICATION:
+            return {
+                ...state,
+                activatedNotes: action.payload,
+            }
+        case REMOVE_NOTIFICATION:
+            return {
+                ...state,
+                notifications: state.notifications.filter(e => e.id !== action.payload),
             }
         default:
             return state;

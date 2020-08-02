@@ -6,11 +6,11 @@ import { CREATE_WIDGET, GET_WIDGETS } from '../actions/widgetActions';
 import { hasNoWidgets } from '../../utils/helpers';
 
 const mapStateToProps = (state, ownProps) => {
-    const { widgets } = state;
-    debugger;
-    if (widgets)
+    const { widgets, alarms } = state;
+    if (widgets && alarms)
         return {
             widgets: widgets.widgets,
+            activatedAlarms: alarms.alarmCounter,
             loadingWidgets: widgets.loadingWidgets,
             hasNoWidgets: hasNoWidgets(widgets.widgets)
         }

@@ -1,4 +1,4 @@
-import { all, call, put } from 'redux-saga/effects'
+import { all, call, put } from 'redux-saga/effects';
 import { SET_LOADING_WIDGETS, SET_WIDGETS, SET_WIDGETS_ERROR } from '../actions/widgetActions';
 import { getMyWidgets, createMyWidget } from '../../api/api';
 
@@ -10,8 +10,9 @@ export function* getWidgets(action) {
         console.log(widgets);
         yield put({ type: SET_WIDGETS, payload: widgets.data });
         yield put({ type: SET_LOADING_WIDGETS, payload: false });
+        yield put({ type: SET_WIDGETS_ERROR, payload: false });
     } catch (e) {
-        yield put({ type: SET_WIDGETS_ERROR, payload: [] });
+        yield put({ type: SET_WIDGETS_ERROR, payload: true });
         yield put({ type: SET_LOADING_WIDGETS, payload: false });
     }
 }

@@ -11,7 +11,7 @@ export default function Widgets(props) {
                     <Card.Content>
                         <Card.Header>Activated Alarms:</Card.Header>
                         <Card.Description>
-                            {/* {this.props.activatedAlarms} */}
+                            {props.activatedAlarms}
                         </Card.Description>
                     </Card.Content>
                 </Card>}

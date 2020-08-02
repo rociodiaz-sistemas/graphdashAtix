@@ -1,22 +1,50 @@
 import React, { Component } from 'react';
-import { Header, Icon, Segment, Dropdown, Card, Popup, Button } from 'semantic-ui-react';
+import { Header, Icon, Segment, Dropdown, Card, Popup, Button, Transition } from 'semantic-ui-react';
 
 export default class NotificationBadge extends Component {
+
+    componentDidUpdate(prevprops) {
+        if (prevprops.notifications && this.props.notifications.length > 0 && this.props.notifications !== prevprops.notifications) {
+            this.props.activateNotification(true);
+        }
+    }
+
+    deactivateNotification = (e) => {
+        debugger;
+        this.props.removeNotification(e.currentTarget.id);
+    }
+
     render() {
-        let notifications =  [{name: 'my alarm', triggerValue: '80%', trigger: 'over', metric: 'CPU'}];
+        debugger;
         return (
-            <Popup position='bottom right' trigger={<Button icon='alarm' />} hoverable
-            header={'Your notifications'} 
-            content={notifications.map((item, i) => <NoteCard note={item} key={i}></NoteCard>)}
+            <Popup position='bottom right' trigger={<Button color={this.props.activatedNotes ? 'red' : 'grey'}
+                icon={this.props.activatedNotes ? 'bell' : 'bell outline'} />} hoverable
+                header={'Your notifications'}
+                content={this.props.notifications && this.props.notifications.length > 0 ? 
+                    this.props.notifications.map((item, i) => 
+                    <NoteCard hush={this.deactivateNotification} note={item} key={item.id}></NoteCard>) :
+                    <NoNoteCard />}
             />
         );
     }
 }
 
 function NoteCard(props) {
+    debugger;
+    return (
+        <Button id={props.note.id} onClick={(e) => props.hush(e)} animated>
+            <Button.Content visible>Your {props.note.metric} for <strong>{props.note.name}</strong> is {props.note.trigger} <strong>{props.note.triggerValue}</strong>!</Button.Content>
+            <Button.Content hidden>
+                <Icon name='close' />
+            </Button.Content>
+        </Button>
+    );
+}
+
+const NoNoteCard = () => {
     return (
         <Card>
-            <Card.Content>Your {props.note.metric} for <strong>{props.note.name}</strong> is {props.note.trigger} <strong>{props.note.triggerValue}</strong>!</Card.Content>
+            <Card.Content>Phew... No notifications here</Card.Content>
         </Card>
-    );
+    )
 }
