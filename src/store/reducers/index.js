@@ -1,10 +1,10 @@
 import { connectRouter } from 'connected-react-router';
 import { combineReducers } from 'redux';
-import alarm from './alarmReducers';
+import alarms from './alarmReducers';
 import widgets from './widgetReducers';
 
 const createRootReducer = (history) => combineReducers({
-    alarm,
+    alarms,
     widgets,
     router: connectRouter(history),
 });

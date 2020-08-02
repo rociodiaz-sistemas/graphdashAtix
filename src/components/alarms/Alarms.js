@@ -2,12 +2,6 @@ import React, { Component } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Header, Icon, Segment, Dropdown, Card } from 'semantic-ui-react';
 import { WIDGET_OPTIONS } from '../../utils/constants';
-import { hasNoWidgets, getWidgetToCreate } from '../../utils/helpers';
-import { render } from '@testing-library/react';
-import widget from '../../store/reducers/widgetReducers';
-import Widgets from './Widgets';
-// import SegmentPlaceholder from './SegmentExamplePlaceholder';
-// import axios from 'axios';
 
 export default class Dashboard extends Component {
     addWidget = (text) => {

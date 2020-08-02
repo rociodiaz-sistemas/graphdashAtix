@@ -8,8 +8,7 @@ export const api = {
 };
 
 export const WIDGET_OPTIONS = [
-    { key: 1, text: 'Alarms', value: 'alarms', },
-    { key: 2, text: 'AnotherExample', value: 'another' },
+    { key: 1, text: 'Alarms', value: 'alarms' }
 ]
 
 export const httpMethods = {
@@ -18,4 +17,4 @@ export const httpMethods = {
     PUT: 'put',
     PATCH: 'patch',
     DELETE: 'delete'
-  }
+}

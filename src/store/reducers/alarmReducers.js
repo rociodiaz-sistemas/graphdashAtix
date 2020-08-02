@@ -1,7 +1,8 @@
 import { SET_ALARMS } from '../actions/alarmActions';
 
 const initialState = {
-    alarms: undefined
+    alarms: undefined,
+    notifications: {name: 'my alarm', trigger: '80%', metric: 'CPU'}
 };
 
 function alarm(state = initialState, action) {
@@ -10,6 +11,7 @@ function alarm(state = initialState, action) {
             return {
                 ...state,
                 alarms: action.payload,
+                notifications: action.payload.filter(alarm => alarm.status === true)
             }
         default:
             return state;

@@ -2,16 +2,16 @@ import { SET_WIDGETS, SET_LOADING_WIDGETS } from '../actions/widgetActions';
 
 const initialState = {
     widgets: undefined,
-    loadingWidgets: false
+    loadingWidgets: false,
+    hasNoWidgets: true,
 };
 
 function widget(state = initialState, action) {
     switch (action.type) {
         case SET_WIDGETS:
-            debugger;
             return {
                 ...state,
-                widgets: action.payload
+                widgets: action.payload,
             }
         case SET_LOADING_WIDGETS:
             return {

@@ -7,10 +7,31 @@ import EnterDashboard from './components/EnterDashboard/EnterDashBoard.js';
 import { Route, Switch } from 'react-router' // react-router v4/v5
 import LayoutContainer from './components/shared/LayoutContainer.js';
 import './App.css';
+import { GET_WIDGETS } from './store/actions/widgetActions';
+import { GET_ALARMS } from './store/actions/alarmActions';
 
 export default class App extends Component {
   history = createBrowserHistory();
   store = configureStore(this.history);
+  intervalID;
+
+  componentDidMount() {
+    this.store.dispatch({
+      type: GET_WIDGETS,
+    });
+
+    this.intervalID = setInterval(this.store.dispatch({
+      type: GET_ALARMS,
+    }).bind(this), 3000);
+  }
+
+  componentWillUnmount() {
+    /*
+      stop getData() from continuing to run even
+      after unmounting this component
+    */
+    clearInterval(this.intervalID);
+  }
 
   render() {
     return (
@@ -26,7 +47,6 @@ export default class App extends Component {
           </div>
         </ConnectedRouter>
       </Provider>
-
     )
   }
 }

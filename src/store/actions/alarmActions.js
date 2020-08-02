@@ -1,10 +1,8 @@
+export const SET_ALARMS = "SET_ALARMS";
+export const SET_LOADING_ALARMS = "SET_LOADING_ALARMS";
+export const SET_ALARMS_ERROR = "SET_ALARMS_ERROR";
 
 export const GET_ALARMS = "GET_ALARMS";
-export const MY_ACTION = "MY_ACTION";
-
-export const SET_ALARMS = "SET_ALARMS";
-export const SET_SEARCHING_ALARMS = "SET_SEARCHING_ALARMS";
-export const SET_GET_ALARMS_ERROR = "SET_GET_ALARMS_ERROR";
 
 //MY ALARM ACTIONS
 export const CREATE_ALARM = "CREATE_ALARM";

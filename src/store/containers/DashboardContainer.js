@@ -3,15 +3,16 @@ import { SET_ALARMS } from '../actions/alarmActions';
 import Dashboard from '../../components/dashboard/Dashboard';
 import{push,replace}from'connected-react-router';
 import { CREATE_WIDGET, GET_WIDGETS } from '../actions/widgetActions';
+import { hasNoWidgets } from '../../utils/helpers';
 
 const mapStateToProps = (state, ownProps) => {
     const { widgets } = state;
-
     debugger;
     if (widgets)
         return {
             widgets: widgets.widgets,
-            loadingWidgets: widgets.loadingWidgets
+            loadingWidgets: widgets.loadingWidgets,
+            hasNoWidgets: hasNoWidgets(widgets.widgets)
         }
     else
         return {};
@@ -22,7 +23,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             dispatch({ type: GET_WIDGETS })
         },
         createWidget: (payload) => {
-            dispatch({ type: CREATE_WIDGET, payload: payload.widget })
+            dispatch({ type: CREATE_WIDGET, payload: payload })
         },
         redirectTo: (payload) => {
             push('/' + payload)
