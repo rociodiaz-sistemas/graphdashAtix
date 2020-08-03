@@ -6,8 +6,6 @@ import { hasNoWidgets, getWidgetToCreate } from '../../utils/helpers';
 import { render } from '@testing-library/react';
 import widget from '../../store/reducers/widgetReducers';
 import Widgets from './Widgets';
-// import SegmentPlaceholder from './SegmentExamplePlaceholder';
-// import axios from 'axios';
 
 export default class Dashboard extends Component {
     addWidget = (text) => {

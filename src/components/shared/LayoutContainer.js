@@ -7,6 +7,7 @@ import TopBar from './TopBar';
 import PathsRouter from './pathsRouter';
 import Dashboard from '../dashboard/Dashboard';
 import DashboardContainer from '../../store/containers/DashboardContainer';
+import AlarmsContainer from '../../store/containers/AlarmsContainer';
 const LayoutContainer = () => (
     <Container>
         <Grid columns='equal'>
@@ -18,7 +19,7 @@ const LayoutContainer = () => (
                 <Grid.Column style={{ paddingRight: '0', width: '87.5%' }}>
                     <Switch>
                         <Route exact path="/dashboard" render={() => (<DashboardContainer></DashboardContainer>)} />
-                        {/* <Route render={() => (<div>Miss</div>)} /> */}
+                        <Route path="/alarms" render={() => (<AlarmsContainer></AlarmsContainer>)} />
                     </Switch>
                 </Grid.Column>
             </Grid.Row>

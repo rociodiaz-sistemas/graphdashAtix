@@ -10,12 +10,10 @@ export default class NotificationBadge extends Component {
     }
 
     deactivateNotification = (e) => {
-        debugger;
         this.props.removeNotification(e.currentTarget.id);
     }
 
     render() {
-        debugger;
         return (
             <Popup position='bottom right' trigger={<Button color={this.props.activatedNotes ? 'red' : 'grey'}
                 icon={this.props.activatedNotes ? 'bell' : 'bell outline'} />} hoverable
@@ -30,7 +28,6 @@ export default class NotificationBadge extends Component {
 }
 
 function NoteCard(props) {
-    debugger;
     return (
         <Button id={props.note.id} onClick={(e) => props.hush(e)} animated>
             <Button.Content visible>Your {props.note.metric} for <strong>{props.note.name}</strong> is {props.note.trigger} <strong>{props.note.triggerValue}</strong>!</Button.Content>

@@ -1,42 +1,75 @@
 import React, { Component } from 'react';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Header, Icon, Segment, Dropdown, Card } from 'semantic-ui-react';
-import { WIDGET_OPTIONS } from '../../utils/constants';
+import { Icon, Label, Menu, Table, Segment, Button, Header, Form, Input, Modal, Popup } from 'semantic-ui-react'
+import { EditCreateAlarmModal } from './EditCreateAlarmModal';
 
-export default class Dashboard extends Component {
-    addWidget = (text) => {
-        this.props.createWidget(getWidgetToCreate(text));
+export default class Alarms extends Component {
+
+    handleOpenModal = (payload) => {
+        //accepts type to know if the modal will be for creating or editting
+        debugger;
+        if (payload.alarm) {
+            this.props.setSelectedAlarm(payload.alarm);
+        }
+        this.props.openModal({ isOpen: !this.props.isOpenModal, type: payload.type });
     }
 
     render() {
         return (
-            <Segment style={{ minHeight: '250px' }} loading={this.props.loadingWidgets}>
-                {this.props.hasNoWidgets ?
-                    <SegmentPlaceholder addWidget={this.addWidget} />
-
-                : <Widgets widgets={this.props.widgets}/> }
+            <Segment style={{ minHeight: '250px' }} loading={this.props.loadingAlarms}>
+                {this.props.alarms && this.props.alarms.length > 0 ?
+                    <AlarmsTable props={this.props} handleOpenModal={this.handleOpenModal} />
+                    : <SegmentPlaceholder handleOpenModal={this.handleOpenModal}></SegmentPlaceholder>}
+                <EditCreateAlarmModal props={this.props} handleOpenModal={this.handleOpenModal} />
+                <Button floated='right' onClick={() => this.handleOpenModal({ type: 'create' })} color='primary'> Add an alarm </Button>
             </Segment>
         );
     }
 }
 
+function AlarmsTable(_this) {
+    debugger;
+    return (
+        <Table celled>
+            <Table.Header>
+                <Table.Row>
+                    <Table.HeaderCell>Name</Table.HeaderCell>
+                    <Table.HeaderCell>Source</Table.HeaderCell>
+                    <Table.HeaderCell>Metric</Table.HeaderCell>
+                    <Table.HeaderCell>Trigger</Table.HeaderCell>
+                    <Table.HeaderCell>Trigger Value</Table.HeaderCell>
+                    <Table.HeaderCell>Actions</Table.HeaderCell>
+                </Table.Row>
+            </Table.Header>
+
+            <Table.Body contenteditable>
+                {_this.props.alarms.map((item, i) => {
+                    return (
+                        <Table.Row contenteditable key={i}>
+                            <Table.Cell>{item.name}</Table.Cell>
+                            <Table.Cell>{item.source}</Table.Cell>
+                            <Table.Cell>{item.metric}</Table.Cell>
+                            <Table.Cell>{item.trigger}</Table.Cell>
+                            <Table.Cell>{item.triggerValue}</Table.Cell>
+                            <Table.Cell>
+                                <Popup content='Double click to delete' trigger={<Button onDoubleClick={() => _this.props.deleteAlarm(item)}>Delete</Button>} />
+                                <Button onClick={() => _this.handleOpenModal({ alarm: item, type: 'edit' })}>Edit</Button>
+                                <Button onClick={() => _this.props.pauseAlarm({id: item.id, isPaused: !item.paused})} color={item.paused ? 'green' : 'red'} icon={item.paused ? 'play' : 'pause'} />
+                            </Table.Cell>
+                        </Table.Row>
+                    );
+                })}
+            </Table.Body>
+        </Table>
+    );
+}
+
 function SegmentPlaceholder(props) {
     return (<Segment placeholder>
         <Header icon>
-            <Icon name='object group outline' />
-            It seems you haven't added any widgets yet
+            <Icon name='bell outline' />
+            It seems you haven't added any alarms yet
           </Header>
-        <Dropdown
-            button
-            className='icon'
-            onChange={(e) => {   props.addWidget(e.currentTarget.innerText) }}
-            floating
-            labeled
-            placeholder={'choose your widget'}
-            icon='add'
-            options={WIDGET_OPTIONS}
-            text='Add Widget'
-        />
+        <Button onClick={() => props.handleOpenModal({ type: 'create' })} color='primary'> Add an alarm </Button>
     </Segment>
     )
 }

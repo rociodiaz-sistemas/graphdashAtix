@@ -38,7 +38,7 @@ export default class App extends Component {
             <header className="App-header">
               <Switch>
                 <Route exact path="/" render={() => (<EnterDashboard></EnterDashboard>)} />
-                <Route exact path={["/dashboard", "/listing"]} render={() => (<LayoutContainer></LayoutContainer>)} />
+                <Route exact path={["/dashboard", "/alarms"]} render={() => (<LayoutContainer></LayoutContainer>)} />
               </Switch>
             </header>
           </div>
