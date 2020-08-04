@@ -17,12 +17,12 @@ export default class Alarms extends Component {
     render() {
         return (
             <Segment style={{ minHeight: '250px' }} loading={this.props.loadingAlarms}>
-                {this.props.alarms && this.props.alarms.length > 0 ?
+                {this.props.hasAlarms ?
                     <div>
                         <AlarmsTable props={this.props} handleOpenModal={this.handleOpenModal} />
                         <Button floated='right' onClick={() => this.handleOpenModal({ type: 'create' })} color='primary'> Add an alarm </Button>
                     </div>
-                    : <SegmentPlaceholder handleOpenModal={this.handleOpenModal}></SegmentPlaceholder>}
+                    : <SegmentPlaceholder openModal={this.props.openCreateModal}></SegmentPlaceholder>}
                 <EditCreateAlarmModalContainer/>
             </Segment>
         );
@@ -72,7 +72,7 @@ function SegmentPlaceholder(props) {
             <Icon name='bell outline' />
             It seems you haven't added any alarms yet
           </Header>
-        <Button onClick={() => props.handleOpenModal({ type: 'create' })} color='primary'> Add an alarm </Button>
+        <Button onClick={() => props.openModal()} color='primary'> Add an alarm </Button>
     </Segment>
     )
 }

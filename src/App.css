@@ -55,7 +55,3 @@ input {
 .no-outline:focus {
   outline: none;
 }
-
-.ui.animated.button {
-  width: -webkit-fill-available;
-}

@@ -1,19 +1,22 @@
 import { hasNoWidgets, formatInputs, formatCreateInputs } from '../../utils/helpers';
-import { OPEN_MODAL, SET_SELECTED_ALARM, EDIT_ALARM, CREATE_ALARM, DELETE_ALARM, SET_COUNTER, PAUSE_ALARM, CLOSE_MODAL, OPEN_EDIT_MDOAL, OPEN_CREATE_MODAL } from '../actions/alarmActions';
+import { OPEN_MODAL, SET_SELECTED_ALARM, EDIT_ALARM, CREATE_ALARM, DELETE_ALARM, SET_COUNTER, PAUSE_ALARM, CLOSE_MODAL, OPEN_EDIT_MODAL, OPEN_CREATE_MODAL } from '../actions/alarmActions';
 
 export const mapStateToProps = (state, ownProps) => {
     const { alarms } = state;
     debugger;
-    if (alarms)
-        return {
-            alarms: alarms.alarms,
-            loadingAlarms: alarms.loadingAlarms,
-            isOpenModal: alarms.isOpenModal,
-            selectedAlarm: alarms.selectedAlarm,
-            isEdit: alarms.isEdit,
-        }
-    else
-        return {};
+    if (!alarms) return {};
+
+    let myAlarms = alarms.alarms;
+
+    return {
+        alarms: myAlarms,
+        loadingAlarms: alarms.loadingAlarms,
+        isOpenModal: alarms.isOpenModal,
+        selectedAlarm: alarms.selectedAlarm,
+        isEdit: alarms.isEdit,
+        hasAlarms: myAlarms && myAlarms.length > 0
+    }
+        
 }
 export const mapDispatchToProps = (dispatch, ownProps) => {
     return {
@@ -23,15 +26,15 @@ export const mapDispatchToProps = (dispatch, ownProps) => {
         closeModal: () => {
             dispatch({ type: CLOSE_MODAL })
         },
-        openEditModal: (payload) => {
-            dispatch({ type: OPEN_EDIT_MDOAL });
-            dispatch({ type: SET_SELECTED_ALARM, payload: payload });
+        openEditModal: (alarm) => {
+            dispatch({ type: OPEN_EDIT_MODAL });
+            dispatch({ type: SET_SELECTED_ALARM, payload: alarm });
         },
         openCreateModal: () => {
             dispatch({ type: OPEN_CREATE_MODAL });
         },
-        setSelectedAlarm: (payload) => {
-            dispatch({ type: SET_SELECTED_ALARM, payload: payload })
+        setSelectedAlarm: (alarm) => {
+            dispatch({ type: SET_SELECTED_ALARM, payload: alarm })
         },
         editAlarm: (payload) => {
             let alarm = formatInputs(payload.inputs);

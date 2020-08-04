@@ -18,9 +18,9 @@ export default class NotificationBadge extends Component {
             <Popup position='bottom right' trigger={<Button color={this.props.activatedNotes ? 'red' : 'grey'}
                 icon={this.props.activatedNotes ? 'bell' : 'bell outline'} />} hoverable
                 header={'Your notifications'}
-                content={this.props.notifications && this.props.notifications.length > 0 ? 
-                    this.props.notifications.map((item, i) => 
-                    <NoteCard hush={this.deactivateNotification} note={item} key={item.id}></NoteCard>) :
+                content={this.props.notifications && this.props.notifications.length > 0 ?
+                    this.props.notifications.map((item, i) =>
+                        <NoteCard hush={this.deactivateNotification} note={item} key={item.id}></NoteCard>) :
                     <NoNoteCard />}
             />
         );
@@ -29,7 +29,7 @@ export default class NotificationBadge extends Component {
 
 function NoteCard(props) {
     return (
-        <Button id={props.note.id} onClick={(e) => props.hush(e)} animated>
+        <Button style={{ width: '-webkit-fill-available' }} id={props.note.id} onClick={(e) => props.hush(e)} animated>
             <Button.Content visible>Your {props.note.metric} for <strong>{props.note.name}</strong> is {props.note.trigger} <strong>{props.note.triggerValue}</strong>!</Button.Content>
             <Button.Content hidden>
                 <Icon name='close' />
