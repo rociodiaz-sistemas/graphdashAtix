@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { SET_ALARMS } from '../actions/alarmActions';
 import Dashboard from '../../components/dashboard/Dashboard';
 import{push,replace}from'connected-react-router';
 import { CREATE_WIDGET, GET_WIDGETS } from '../actions/widgetActions';

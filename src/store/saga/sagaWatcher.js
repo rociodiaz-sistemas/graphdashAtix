@@ -21,6 +21,7 @@ function* SagaWatcher() {
 
 export function* getInitialInfo(action) {
     try {
+        debugger;
         yield put({ type: SET_LOADING_WIDGETS, payload: true });
         yield put({ type: SET_LOADING_ALARMS, payload: true });
         // parallel calls
@@ -30,17 +31,16 @@ export function* getInitialInfo(action) {
         ])
         console.log(widgets);
         console.log(alarms);
-        yield put({ type: SET_LOADING_WIDGETS, payload: false });
+        
         yield put({ type: SET_WIDGETS, payload: widgets.data });
-
         yield put({ type: SET_ALARMS, payload: alarms.data });
+        yield put({ type: SET_LOADING_WIDGETS, payload: false });
         yield put({ type: SET_LOADING_ALARMS, payload: false });
     } catch (e) {
+        debugger;
         yield put({ type: SET_LOADING_ALARMS, payload: false });
         yield put({ type: SET_LOADING_WIDGETS, payload: false });
         yield put({ type: SET_ALARMS_ERROR, payload: true });
-        yield put({ type: SET_ALARMS, payload: undefined });
-        yield put({ type: SET_WIDGETS, payload: undefined });
         console.log(e);
     }
 }

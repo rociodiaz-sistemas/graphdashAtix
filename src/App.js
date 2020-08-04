@@ -17,6 +17,7 @@ export default class App extends Component {
   intervalID;
 
   componentDidMount() {
+    debugger;
     this.store.dispatch({
       type: GET_INITIAL_INFO,
     });

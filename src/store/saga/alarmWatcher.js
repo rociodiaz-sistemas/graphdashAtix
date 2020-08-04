@@ -5,13 +5,14 @@ import { getMyAlarms, editMyAlarm, deleteMyAlarm, createMyAlarm, pauseMyAlarm } 
 
 export function* getAlarms(action) {
     try {
+        debugger;
         const alarms = yield call(getMyAlarms, action.payload);
-        yield put({ type: SET_ALARMS, payload: alarms });
+        yield put({ type: SET_ALARMS, payload: alarms.data});
+        yield put({ type: SET_LOADING_ALARMS, payload: false });
         yield put({ type: SET_ALARMS_ERROR, payload: false });
     } catch (e) {
         yield put({ type: SET_LOADING_ALARMS, payload: false });
         yield put({ type: SET_ALARMS_ERROR, payload: true });
-        yield put({ type: SET_ALARMS, payload: undefined });
         console.log(e);
     }
 }
@@ -30,12 +31,12 @@ export function* pauseAlarm(action) {
     } catch (e) {
         yield put({ type: SET_LOADING_ALARMS, payload: false });
         yield put({ type: SET_ALARMS_ERROR, payload: e });
-        yield put({ type: SET_ALARMS, payload: undefined });
         console.log(e);
     }
 }
 
 export function* createAlarm(action) {
+    debugger;
     try {
         yield put({ type: SET_LOADING_ALARMS, payload: true });
         const createdALarm = yield call(createMyAlarm, action.payload);
@@ -49,12 +50,12 @@ export function* createAlarm(action) {
     } catch (e) {
         yield put({ type: SET_LOADING_ALARMS, payload: false });
         yield put({ type: SET_ALARMS_ERROR, payload: true });
-        yield put({ type: SET_ALARMS, payload: undefined });
         console.log(e);
     }
 }
 
 export function* deleteAlarm(action) {
+    debugger;
     try {
         debugger;
         yield put({ type: SET_LOADING_ALARMS, payload: true });
@@ -69,7 +70,6 @@ export function* deleteAlarm(action) {
     } catch (e) {
         yield put({ type: SET_LOADING_ALARMS, payload: false });
         yield put({ type: SET_ALARMS_ERROR, payload: e });
-        yield put({ type: SET_ALARMS, payload: undefined });
         console.log(e);
     }
 }
@@ -90,7 +90,6 @@ export function* editAlarm(action) {
     } catch (e) {
         yield put({ type: SET_LOADING_ALARMS, payload: false });
         yield put({ type: SET_ALARMS_ERROR, payload: e });
-        yield put({ type: SET_ALARMS, payload: undefined });
         console.log(e);
     }
 }

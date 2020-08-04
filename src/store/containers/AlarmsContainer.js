@@ -7,6 +7,7 @@ import { OPEN_MODAL, SET_SELECTED_ALARM, EDIT_ALARM, CREATE_ALARM, DELETE_ALARM,
 
 const mapStateToProps = (state, ownProps) => {
     const { alarms } = state;
+    debugger;
     if (alarms)
         return {
             alarms: alarms.alarms,

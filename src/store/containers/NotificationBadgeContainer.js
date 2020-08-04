@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { SET_ALARMS, INITIALIZE_WEB_SOCKETS_CHANNEL, ACTIVATE_NOTIFICATION, REMOVE_NOTIFICATION } from '../actions/alarmActions';
+import {INITIALIZE_WEB_SOCKETS_CHANNEL, ACTIVATE_NOTIFICATION, REMOVE_NOTIFICATION } from '../actions/alarmActions';
 import EnterDashboard from '../../components/App';
 import { push, replace } from 'connected-react-router';
 import NotificationBadge from '../../components/shared/NotificationBadge';

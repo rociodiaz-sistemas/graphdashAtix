@@ -14,12 +14,13 @@ const initialState = {
 function alarm(state = initialState, action) {
     switch (action.type) {
         case SET_ALARMS:
+            debugger;
             return {
                 ...state,
                 alarms: action.payload,
                 notifications: action.payload.filter(alarm => alarm.status === true),
                 alarmCounter: action.payload.filter(alarm => alarm.status === true).length,
-                activatedNotes: action.payload.find(alarm => alarm.status === true).length > 0
+                activatedNotes: action.payload.find(alarm => alarm.status === true)
             }
         case SET_LOADING_ALARMS:
             return {
