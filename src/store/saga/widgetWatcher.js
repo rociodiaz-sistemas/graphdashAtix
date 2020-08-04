@@ -10,10 +10,10 @@ export function* getWidgets(action) {
         console.log(widgets);
         yield put({ type: SET_WIDGETS, payload: widgets.data });
         yield put({ type: SET_LOADING_WIDGETS, payload: false });
-        yield put({ type: SET_WIDGETS_ERROR, payload: false });
+        yield put({ type: SET_WIDGETS_ERROR, payload: '' });
     } catch (e) {
         yield put({ type: SET_WIDGETS_ERROR, payload: true });
-        yield put({ type: SET_LOADING_WIDGETS, payload: false });
+        yield put({ type: SET_LOADING_WIDGETS, payload: 'getting your widgets' });
     }
 }
 
@@ -27,9 +27,9 @@ export function* createWidget(action) {
         const widgets = yield call(getMyWidgets, action.payload);
 
         yield put({ type: SET_WIDGETS, payload: widgets.data });
-        yield put({ type: SET_LOADING_WIDGETS, payload: false });
+        yield put({ type: SET_LOADING_WIDGETS, payload: '' });
     } catch (e) {
-        yield put({ type: SET_WIDGETS_ERROR, payload: [] });
+        yield put({ type: SET_WIDGETS_ERROR, payload: 'creating your widget' });
         yield put({ type: SET_LOADING_WIDGETS, payload: false });
     }
 }

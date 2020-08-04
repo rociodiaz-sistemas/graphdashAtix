@@ -15,7 +15,9 @@ export const mapStateToProps = (state, ownProps) => {
         selectedAlarm: alarms.selectedAlarm,
         isEdit: isEdit,
         hasAlarms: myAlarms && myAlarms.length > 0,
-        label: isEdit ? 'Edit' : 'Create'
+        label: isEdit ? 'Edit' : 'Create',
+        showError: alarms.error ? true : false,
+        error: alarms.error
     }
         
 }

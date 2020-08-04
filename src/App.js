@@ -28,13 +28,13 @@ export default class App extends Component {
     );
   }
 
-  componentWillUnmount() {
-    /*
-      stop getData() from continuing to run even
-      after unmounting this component
-    */
-    clearInterval(this.timerID);
-  }
+  // componentWillUnmount() {
+  //   /*
+  //     stop getData() from continuing to run even
+  //     after unmounting this component
+  //   */
+  //   clearInterval(this.timerID);
+  // }
 
   render() {
     return (

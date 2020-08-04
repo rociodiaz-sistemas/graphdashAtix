@@ -1,4 +1,4 @@
-import { SET_ALARMS, SET_LOADING_ALARMS, ACTIVATE_NOTIFICATION, REMOVE_NOTIFICATION, OPEN_MODAL, SET_SELECTED_ALARM, EDIT_ALARM, SET_COUNTER, CLOSE_MODAL, OPEN_EDIT_MODAL, OPEN_CREATE_MODAL } from '../actions/alarmActions';
+import { SET_ALARMS, SET_LOADING_ALARMS, ACTIVATE_NOTIFICATION, REMOVE_NOTIFICATION, OPEN_MODAL, SET_SELECTED_ALARM, EDIT_ALARM, SET_COUNTER, CLOSE_MODAL, OPEN_EDIT_MODAL, OPEN_CREATE_MODAL, SET_ALARMS_ERROR } from '../actions/alarmActions';
 
 const initialState = {
     alarms: undefined,
@@ -9,6 +9,7 @@ const initialState = {
     isOpenModal: false,
     selectedAlarm: {},
     isEdit: '',
+    error: ''
 };
 
 function alarm(state = initialState, action) {
@@ -43,13 +44,13 @@ function alarm(state = initialState, action) {
                 isOpenModal: action.payload.isOpen,
                 isEdit: action.payload.type == 'edit' ? true : false
             }
-            case OPEN_EDIT_MODAL:
+        case OPEN_EDIT_MODAL:
             return {
                 ...state,
                 isOpenModal: true,
                 isEdit: true
             }
-            case OPEN_CREATE_MODAL:
+        case OPEN_CREATE_MODAL:
             return {
                 ...state,
                 isOpenModal: true,
@@ -64,6 +65,11 @@ function alarm(state = initialState, action) {
             return {
                 ...state,
                 selectedAlarm: action.payload
+            }
+        case SET_ALARMS_ERROR:
+            return {
+                ...state,
+                error: action.payload
             }
         default:
             return state;

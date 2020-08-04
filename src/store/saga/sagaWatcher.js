@@ -16,6 +16,7 @@ function* SagaWatcher() {
     yield takeLatest(DELETE_ALARM, deleteAlarm);
     yield takeLatest(PAUSE_ALARM, pauseAlarm);
     yield takeLatest(EDIT_ALARM, editAlarm);
+    yield takeLatest(UPDATE_ALARMS, updateAlarms);
 }
 
 export function* getInitialInfo(action) {
@@ -37,7 +38,6 @@ export function* getInitialInfo(action) {
     } catch (e) {
         yield put({ type: SET_LOADING_ALARMS, payload: false });
         yield put({ type: SET_LOADING_WIDGETS, payload: false });
-        yield put({ type: SET_ALARMS_ERROR, payload: true });
         yield put({ type: SET_ALARMS, payload: undefined });
         yield put({ type: SET_WIDGETS, payload: undefined });
         console.log(e);

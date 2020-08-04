@@ -6,6 +6,7 @@ import { hasNoWidgets, getWidgetToCreate } from '../../utils/helpers';
 import { render } from '@testing-library/react';
 import widget from '../../store/reducers/widgetReducers';
 import Widgets from './Widgets';
+import ErrorMessage from '../shared/ErrorMessage';
 
 export default class Dashboard extends Component {
     addWidget = (text) => {
@@ -18,7 +19,9 @@ export default class Dashboard extends Component {
                 {this.props.hasNoWidgets ?
                     <SegmentPlaceholder addWidget={this.addWidget} />
 
-                : <Widgets widgets={this.props.widgets} activatedAlarms={this.props.activatedAlarms}/> }
+                    : <Widgets widgets={this.props.widgets} activatedAlarms={this.props.activatedAlarms} />}
+                {this.props.showError &&
+                    <ErrorMessage reason={this.props.error} />}
             </Segment>
         );
     }
@@ -33,7 +36,7 @@ function SegmentPlaceholder(props) {
         <Dropdown
             button
             className='icon'
-            onChange={(e) => {   props.addWidget(e.currentTarget.innerText) }}
+            onChange={(e) => { props.addWidget(e.currentTarget.innerText) }}
             floating
             labeled
             placeholder={'choose your widget'}

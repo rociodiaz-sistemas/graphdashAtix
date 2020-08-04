@@ -36,6 +36,6 @@ export function createMyWidget(payload) {
 
 export function pauseMyAlarm(payload) {
     //turning off notifications manually on pause simulating a backend change
-    let response = axios.put(`https://5f23176a0e9f660016d88cc3.mockapi.io/api/graphdash/alarms/${payload.id}`, { paused: payload.isPaused, status: false});
+    let response = axios.put(`https://5f23176a0e9f660016d88cc3.mockapi.io/api/graphdash/alarms/${payload.id}`, { paused: payload.isPaused, status: payload.isPaused ? false : true});
     return response;
 }

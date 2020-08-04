@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import { Icon, Label, Menu, Table, Segment, Button, Header, Form, Input, Modal } from 'semantic-ui-react';
+import ErrorMessage from '../shared/ErrorMessage';
 export function EditCreateAlarmModal(props) {
     let editCreate = props.isEdit ? props.editAlarm : props.createAlarm;
     return (
         <Modal onClose={() => props.closeModal()} open={props.isOpenModal}>
             <Modal.Header>{props.label} Alarm <i>{props.selectedAlarm.name}</i></Modal.Header>
             <Modal.Content>
-                <Form onSubmit={(e) => { editCreate(props.isEdit ? { inputs: e.target.elements, id: props.selectedAlarm.id} : e.target.elements)}}>
+                <Form onSubmit={(e) => { editCreate(props.isEdit ? { inputs: e.target.elements, id: props.selectedAlarm.id } : e.target.elements) }}>
                     <Form.Field>
                         <label>Name</label>
-                        <input required pattern="^[a-zA-Z0-9 ]*$" id="name" onInvalid={setCustomMessage} type="text" name='name' defaultValue={props.selectedAlarm.name} />
+                        <input required pattern="^[a-zA-Z0-9 ]*$" id="name" onInvalid={setCustomMessage} onInput={unsetCustomMessage}type="text" name='name' defaultValue={props.selectedAlarm.name} />
                     </Form.Field>
                     <Form.Field>
                         <label>Source</label>
@@ -36,6 +37,8 @@ export function EditCreateAlarmModal(props) {
             <Modal.Actions>
                 <Button onClick={() => props.closeModal()} color='red'>Cancel</Button>
             </Modal.Actions>
+            {props.showError &&
+                <ErrorMessage reason={this.props.error} />}
         </Modal>
     )
 }
@@ -44,6 +47,12 @@ function setCustomMessage() {
     var input = document.getElementById("name");
     if (input) {
         input.setCustomValidity('Only alphanumeric chars, please!');
+    }
+}
+
+function unsetCustomMessage() {
+    var input = document.getElementById("name");
+    if (input) {
         input.setCustomValidity('');
     }
 }

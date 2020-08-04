@@ -1,9 +1,10 @@
-import { SET_WIDGETS, SET_LOADING_WIDGETS } from '../actions/widgetActions';
+import { SET_WIDGETS, SET_LOADING_WIDGETS, SET_WIDGETS_ERROR } from '../actions/widgetActions';
 
 const initialState = {
     widgets: undefined,
     loadingWidgets: false,
     hasNoWidgets: true,
+    error: ''
 };
 
 function widget(state = initialState, action) {
@@ -17,6 +18,11 @@ function widget(state = initialState, action) {
             return {
                 ...state,
                 loadingWidgets: action.payload
+            }
+            case SET_WIDGETS_ERROR:
+            return {
+                ...state,
+                error: action.payload
             }
         default:
             return state;

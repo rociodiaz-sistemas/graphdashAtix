@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Icon, Label, Menu, Table, Segment, Button, Header, Form, Input, Modal, Popup } from 'semantic-ui-react'
 import { EditCreateAlarmModal } from './EditCreateAlarmModal';
 import EditCreateAlarmModalContainer from '../../store/containers/EditCreateAlarmModalContainer';
+import ErrorMessage from '../shared/ErrorMessage';
 
 export default class Alarms extends Component {
 
@@ -20,10 +21,12 @@ export default class Alarms extends Component {
                 {this.props.hasAlarms ?
                     <div>
                         <AlarmsTable props={this.props} />
-                        <Button floated='right' onClick={() => this.props.openCreateModal()} color='primary'> Add an alarm </Button>
+                        <Button floated='right' onClick={() => this.props.openCreateModal()} color='blue'> Add an alarm </Button>
+                        {this.props.showError &&
+                            <ErrorMessage reason={this.props.error} />}
                     </div>
                     : <SegmentPlaceholder openModal={this.props.openCreateModal}></SegmentPlaceholder>}
-                <EditCreateAlarmModalContainer/>
+                <EditCreateAlarmModalContainer />
             </Segment>
         );
     }
@@ -71,7 +74,7 @@ function SegmentPlaceholder(props) {
             <Icon name='bell outline' />
             It seems you haven't added any alarms yet
           </Header>
-        <Button onClick={() => props.openModal()} color='primary'> Add an alarm </Button>
+        <Button onClick={() => props.openModal()} color='blue'> Add an alarm </Button>
     </Segment>
     )
 }
