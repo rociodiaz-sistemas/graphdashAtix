@@ -14,6 +14,6 @@ The final version is in master branch.
 I'm using:
 -Redux Saga for my store, and connected-react-router for the routes.
 -Axios for api calls.
--UI Semantic for the ui layout and a small carousel library for my instructions.
+-UI Semantic for the ui layout and a small carousel library for my introduction.
 
 That's it! Happy testing and coding :) 
