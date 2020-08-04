@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Icon, Label, Menu, Table, Segment, Button, Header, Form, Input, Modal, Popup } from 'semantic-ui-react'
 import { EditCreateAlarmModal } from './EditCreateAlarmModal';
+import EditCreateAlarmModalContainer from '../../store/containers/EditCreateAlarmModalContainer';
 
 export default class Alarms extends Component {
 
@@ -22,7 +23,7 @@ export default class Alarms extends Component {
                         <Button floated='right' onClick={() => this.handleOpenModal({ type: 'create' })} color='primary'> Add an alarm </Button>
                     </div>
                     : <SegmentPlaceholder handleOpenModal={this.handleOpenModal}></SegmentPlaceholder>}
-                <EditCreateAlarmModal props={this.props} handleOpenModal={this.handleOpenModal} />
+                <EditCreateAlarmModalContainer/>
             </Segment>
         );
     }
