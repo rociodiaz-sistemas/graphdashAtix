@@ -33,7 +33,7 @@ const CardList = () => (
     <List animated verticalAlign='middle'>
         <List.Item>
             <List.Icon color='blue' name='linkedin' />
-            <List.Content><a target="_blank" href="https://www.linkedin.com/in/rocío-díaz-698444194"> My Linkedin </a></List.Content>
+            <List.Content><a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/rocío-díaz-698444194"> My Linkedin </a></List.Content>
         </List.Item>
         <List.Item>
             <List.Icon color='black' name='phone' />

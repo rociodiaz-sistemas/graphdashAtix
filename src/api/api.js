@@ -7,7 +7,6 @@ export function getMyAlarms(payload) {
 
 export function getMyWidgets(payload) {
     let response = axios.get(`https://5f23176a0e9f660016d88cc3.mockapi.io/api/graphdash/widgets`);
-    console.log(response);
     return response
 }
 

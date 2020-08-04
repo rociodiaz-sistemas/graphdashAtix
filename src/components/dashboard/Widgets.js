@@ -21,7 +21,7 @@ export default function Widgets(props) {
                     <Card.Content>
                         <Card.Header>This is another widget:</Card.Header>
                         <Card.Description>
-                            I AM SHOWING IMPORTANT DATA 😎
+                            I AM SHOWING IMPORTANT DATA <span role="img" aria-label="smug emoji">😎</span>
               </Card.Description>
                     </Card.Content>
                 </Card>}
