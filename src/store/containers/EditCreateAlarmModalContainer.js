@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import {mapStateToProps, mapDispatchToProps} from './AlarmsBaseContainer';
 import { EditCreateAlarmModal } from '../../components/alarms/EditCreateAlarmModal';
+import { mapDispatchToProps, mapStateToProps } from './AlarmsBaseContainer';
 
 const EditCreateAlarmModalContainer = connect(
     mapStateToProps,

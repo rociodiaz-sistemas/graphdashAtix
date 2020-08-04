@@ -1,4 +1,5 @@
-import { SET_ALARMS, SET_LOADING_ALARMS, ACTIVATE_NOTIFICATION, REMOVE_NOTIFICATION, OPEN_MODAL, SET_SELECTED_ALARM, EDIT_ALARM, SET_COUNTER, CLOSE_MODAL, OPEN_EDIT_MODAL, OPEN_CREATE_MODAL, SET_ALARMS_ERROR } from '../actions/alarmActions';
+import { removeNotification } from '../../utils/helpers';
+import { ACTIVATE_NOTIFICATION, CLOSE_MODAL, OPEN_CREATE_MODAL, OPEN_EDIT_MODAL, REMOVE_NOTIFICATION, SET_ALARMS, SET_ALARMS_ERROR, SET_LOADING_ALARMS, SET_SELECTED_ALARM } from '../actions/alarmActions';
 
 const initialState = {
     alarms: undefined,
@@ -15,7 +16,6 @@ const initialState = {
 function alarm(state = initialState, action) {
     switch (action.type) {
         case SET_ALARMS:
-            debugger;
             return {
                 ...state,
                 alarms: action.payload,
@@ -36,13 +36,7 @@ function alarm(state = initialState, action) {
         case REMOVE_NOTIFICATION:
             return {
                 ...state,
-                notifications: state.notifications.filter(e => e.id !== action.payload),
-            }
-        case OPEN_MODAL:
-            return {
-                ...state,
-                isOpenModal: action.payload.isOpen,
-                isEdit: action.payload.type == 'edit' ? true : false
+                notifications: removeNotification(state.notifications, action),
             }
         case OPEN_EDIT_MODAL:
             return {

@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Header, Icon, Segment, Dropdown, Card } from 'semantic-ui-react';
+import { Card } from 'semantic-ui-react';
 // import axios from 'axios';
 
 export default function Widgets(props) {

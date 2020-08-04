@@ -31,3 +31,7 @@ export function formatCreateInputs(inputs){
         triggerValue: inputs.triggerValue.value, status: true, paused: false
     };
 }
+
+export function removeNotification(notifications, action){
+    return notifications.filter(e => e.id !== action.payload)
+}

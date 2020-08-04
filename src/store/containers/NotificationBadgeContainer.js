@@ -1,8 +1,7 @@
+import { push } from 'connected-react-router';
 import { connect } from 'react-redux';
-import {INITIALIZE_WEB_SOCKETS_CHANNEL, ACTIVATE_NOTIFICATION, REMOVE_NOTIFICATION } from '../actions/alarmActions';
-import EnterDashboard from '../../components/App';
-import { push, replace } from 'connected-react-router';
 import NotificationBadge from '../../components/shared/NotificationBadge';
+import { ACTIVATE_NOTIFICATION, REMOVE_NOTIFICATION } from '../actions/alarmActions';
 
 const mapStateToProps = (state, ownProps) => {
     const { alarms } = state;

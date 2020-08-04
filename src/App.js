@@ -2,14 +2,13 @@ import { ConnectedRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import configureStore from './store/index';
-import EnterDashboard from './components/EnterDashboard/EnterDashBoard.js';
-import { Route, Switch } from 'react-router' // react-router v4/v5
-import LayoutContainer from './components/shared/LayoutContainer.js';
+import { Route, Switch } from 'react-router'; // react-router v4/v5
 import './App.css';
-import { GET_WIDGETS } from './store/actions/widgetActions';
-import { GET_ALARMS, UPDATE_ALARMS } from './store/actions/alarmActions';
+import EnterDashboard from './components/EnterDashboard/EnterDashBoard.js';
+import LayoutContainer from './components/shared/LayoutContainer.js';
+import { UPDATE_ALARMS } from './store/actions/alarmActions';
 import { GET_INITIAL_INFO } from './store/actions/sharedActions';
+import configureStore from './store/index';
 
 export default class App extends Component {
   history = createBrowserHistory();

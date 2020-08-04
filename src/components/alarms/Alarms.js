@@ -1,20 +1,9 @@
 import React, { Component } from 'react';
-import { Icon, Label, Menu, Table, Segment, Button, Header, Form, Input, Modal, Popup } from 'semantic-ui-react'
-import { EditCreateAlarmModal } from './EditCreateAlarmModal';
+import { Button, Header, Icon, Popup, Segment, Table } from 'semantic-ui-react';
 import EditCreateAlarmModalContainer from '../../store/containers/EditCreateAlarmModalContainer';
 import ErrorMessage from '../shared/ErrorMessage';
 
 export default class Alarms extends Component {
-
-    handleOpenModal = (payload) => {
-        //accepts type to know if the modal will be for creating or editting
-        debugger;
-        if (payload.alarm) {
-            this.props.setSelectedAlarm(payload.alarm);
-        }
-        this.props.openModal({ isOpen: !this.props.isOpenModal, type: payload.type });
-    }
-
     render() {
         return (
             <Segment style={{ minHeight: '250px' }} loading={this.props.loadingAlarms}>

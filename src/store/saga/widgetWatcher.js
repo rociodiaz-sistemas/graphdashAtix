@@ -1,6 +1,6 @@
-import { all, call, put } from 'redux-saga/effects';
+import { call, put } from 'redux-saga/effects';
+import { createMyWidget, getMyWidgets } from '../../api/api';
 import { SET_LOADING_WIDGETS, SET_WIDGETS, SET_WIDGETS_ERROR } from '../actions/widgetActions';
-import { getMyWidgets, createMyWidget } from '../../api/api';
 
 export function* getWidgets(action) {
     try {

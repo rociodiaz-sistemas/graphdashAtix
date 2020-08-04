@@ -1,6 +1,6 @@
 import React from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Button, Container, Header, Icon, Popup } from 'semantic-ui-react';
+import { Button, Header, Icon, Popup } from 'semantic-ui-react';
 import HiCard from './HiCard';
 
 export default function EnterDashboard() {

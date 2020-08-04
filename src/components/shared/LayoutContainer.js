@@ -1,13 +1,10 @@
 import React from 'react';
-import EnterDashboard from '../EnterDashboard/EnterDashBoard';
-import NavBar from './NavBar';
-import { Switch, Route } from "react-router";
-import { Container, Grid, Segment } from 'semantic-ui-react';
-import TopBar from './TopBar';
-import PathsRouter from './pathsRouter';
-import Dashboard from '../dashboard/Dashboard';
-import DashboardContainer from '../../store/containers/DashboardContainer';
+import { Route, Switch } from "react-router";
+import { Container, Grid } from 'semantic-ui-react';
 import AlarmsContainer from '../../store/containers/AlarmsContainer';
+import DashboardContainer from '../../store/containers/DashboardContainer';
+import NavBar from './NavBar';
+import TopBar from './TopBar';
 const LayoutContainer = () => (
     <Container>
         <Grid columns='equal'>

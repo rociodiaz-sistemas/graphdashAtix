@@ -1,4 +1,4 @@
-import { SET_WIDGETS, SET_LOADING_WIDGETS, SET_WIDGETS_ERROR } from '../actions/widgetActions';
+import { SET_LOADING_WIDGETS, SET_WIDGETS, SET_WIDGETS_ERROR } from '../actions/widgetActions';
 
 const initialState = {
     widgets: undefined,

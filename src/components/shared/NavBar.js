@@ -1,6 +1,6 @@
-import React from 'react'
-import { Menu, Grid } from 'semantic-ui-react'
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { Menu } from 'semantic-ui-react';
 
 function NavBar() {
     return (

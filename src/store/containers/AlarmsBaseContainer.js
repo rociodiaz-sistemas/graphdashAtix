@@ -1,5 +1,5 @@
-import { hasNoWidgets, formatInputs, formatCreateInputs } from '../../utils/helpers';
-import { OPEN_MODAL, SET_SELECTED_ALARM, EDIT_ALARM, CREATE_ALARM, DELETE_ALARM, SET_COUNTER, PAUSE_ALARM, CLOSE_MODAL, OPEN_EDIT_MODAL, OPEN_CREATE_MODAL } from '../actions/alarmActions';
+import { formatCreateInputs, formatInputs } from '../../utils/helpers';
+import { CLOSE_MODAL, CREATE_ALARM, DELETE_ALARM, EDIT_ALARM, OPEN_CREATE_MODAL, OPEN_EDIT_MODAL, PAUSE_ALARM, SET_SELECTED_ALARM } from '../actions/alarmActions';
 
 export const mapStateToProps = (state, ownProps) => {
     const { alarms } = state;
@@ -23,9 +23,6 @@ export const mapStateToProps = (state, ownProps) => {
 }
 export const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        openModal: (payload) => {
-            dispatch({ type: OPEN_MODAL, payload: payload })
-        },
         closeModal: () => {
             dispatch({ type: CLOSE_MODAL })
         },
@@ -40,7 +37,6 @@ export const mapDispatchToProps = (dispatch, ownProps) => {
             dispatch({ type: SET_SELECTED_ALARM, payload: alarm })
         },
         editAlarm: (payload) => {
-            debugger;
             let alarm = formatInputs(payload.inputs);
             dispatch({ type: EDIT_ALARM, payload: { alarm: alarm, id: payload.id } })
         },

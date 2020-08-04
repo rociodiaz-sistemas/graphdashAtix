@@ -1,7 +1,6 @@
-import { eventChannel } from 'redux-saga';
-import { all, call, put, take } from 'redux-saga/effects'
-import { SET_LOADING_ALARMS, SET_ALARMS, SET_ALARMS_ERROR, OPEN_MODAL, CLOSE_MODAL } from '../actions/alarmActions';
-import { getMyAlarms, editMyAlarm, deleteMyAlarm, createMyAlarm, pauseMyAlarm } from '../../api/api';
+import { call, put } from 'redux-saga/effects';
+import { createMyAlarm, deleteMyAlarm, editMyAlarm, getMyAlarms, pauseMyAlarm } from '../../api/api';
+import { CLOSE_MODAL, OPEN_MODAL, SET_ALARMS, SET_ALARMS_ERROR, SET_LOADING_ALARMS } from '../actions/alarmActions';
 
 export function* getAlarms(action) {
     try {
@@ -28,7 +27,6 @@ export function* updateAlarms(action) {
 
 export function* pauseAlarm(action) {
     try {
-        debugger;
         yield put({ type: SET_LOADING_ALARMS, payload: true });
         const pausedAlarm = yield call(pauseMyAlarm, action.payload);
         console.log(pausedAlarm);
@@ -45,7 +43,6 @@ export function* pauseAlarm(action) {
 }
 
 export function* createAlarm(action) {
-    debugger;
     try {
         yield put({ type: SET_LOADING_ALARMS, payload: true });
         const createdALarm = yield call(createMyAlarm, action.payload);
@@ -83,7 +80,6 @@ export function* deleteAlarm(action) {
 
 export function* editAlarm(action) {
     try {
-        debugger;
         yield put({ type: SET_LOADING_ALARMS, payload: true });
         const editedAlarm = yield call(editMyAlarm, action.payload);
         console.log(editedAlarm);

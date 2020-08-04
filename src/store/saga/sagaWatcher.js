@@ -1,11 +1,10 @@
-import { takeLatest, takeEvery } from 'redux-saga/effects';
-import { all, call, put } from 'redux-saga/effects';
-import { GET_WIDGETS, CREATE_WIDGET, SET_LOADING_WIDGETS, SET_WIDGETS } from '../actions/widgetActions';
-import { getWidgets, createWidget } from './widgetWatcher';
-import { getAlarms, updateAlarms, deleteAlarm, pauseAlarm, createAlarm, editAlarm } from './alarmWatcher';
-import { GET_ALARMS, SET_LOADING_ALARMS, SET_ALARMS, SET_ALARMS_ERROR, UPDATE_ALARMS, DELETE_ALARM, PAUSE_ALARM, CREATE_ALARM, EDIT_ALARM } from '../actions/alarmActions';
+import { all, call, put, takeLatest } from 'redux-saga/effects';
 import { getMyAlarms, getMyWidgets } from '../../api/api';
+import { CREATE_ALARM, DELETE_ALARM, EDIT_ALARM, GET_ALARMS, PAUSE_ALARM, SET_ALARMS, SET_LOADING_ALARMS, UPDATE_ALARMS } from '../actions/alarmActions';
 import { GET_INITIAL_INFO } from '../actions/sharedActions';
+import { CREATE_WIDGET, GET_WIDGETS, SET_LOADING_WIDGETS, SET_WIDGETS } from '../actions/widgetActions';
+import { createAlarm, deleteAlarm, editAlarm, getAlarms, pauseAlarm, updateAlarms } from './alarmWatcher';
+import { createWidget, getWidgets } from './widgetWatcher';
 
 function* SagaWatcher() {
     yield takeLatest(GET_WIDGETS, getWidgets);

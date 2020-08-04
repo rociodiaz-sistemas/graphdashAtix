@@ -1,8 +1,8 @@
+import { push } from 'connected-react-router';
 import { connect } from 'react-redux';
 import Dashboard from '../../components/dashboard/Dashboard';
-import { push, replace } from 'connected-react-router';
-import { CREATE_WIDGET, GET_WIDGETS } from '../actions/widgetActions';
 import { hasNoWidgets } from '../../utils/helpers';
+import { CREATE_WIDGET, GET_WIDGETS } from '../actions/widgetActions';
 
 const mapStateToProps = (state, ownProps) => {
     const { widgets, alarms } = state;
@@ -10,7 +10,7 @@ const mapStateToProps = (state, ownProps) => {
     let error = widgets.error;
     return {
         widgets: widgets.widgets,
-        activatedAlarms: alarms.alarmCounter,
+        activatedAlarms: alarms.alarms ? alarms.alarms.filter(alarm => alarm.status === true).length : false,
         loadingWidgets: widgets.loadingWidgets,
         hasNoWidgets: hasNoWidgets(widgets.widgets),
         error: error,

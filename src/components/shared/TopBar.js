@@ -1,5 +1,5 @@
-import React from 'react'
-import { Dropdown, Icon, Menu, Segment, Grid } from 'semantic-ui-react'
+import React from 'react';
+import { Grid, Menu } from 'semantic-ui-react';
 import NotificationBadge from '../../store/containers/NotificationBadgeContainer';
 
 function TopBar() {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header, Icon, Segment, Dropdown, Card, Popup, Button, Transition } from 'semantic-ui-react';
+import { Button, Card, Icon, Popup } from 'semantic-ui-react';
 
 export default class NotificationBadge extends Component {
 

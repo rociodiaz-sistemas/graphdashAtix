@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export function getMyAlarms(payload) {
-    debugger;
     let response = axios.get(`https://5f23176a0e9f660016d88cc3.mockapi.io/api/graphdash/alarms`)
     return response;
 }
@@ -18,7 +17,6 @@ export function editMyAlarm(payload) {
 }
 
 export function createMyAlarm(payload) {
-    debugger;
     let response = axios.post(`https://5f23176a0e9f660016d88cc3.mockapi.io/api/graphdash/alarms/`, payload);
     return response;
 }

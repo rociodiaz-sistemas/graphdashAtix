@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Icon, Label, Menu, Table, Segment, Button, Header, Form, Input, Modal } from 'semantic-ui-react';
+import React from 'react';
+import { Button, Form, Modal } from 'semantic-ui-react';
 import ErrorMessage from '../shared/ErrorMessage';
 export function EditCreateAlarmModal(props) {
     let editCreate = props.isEdit ? props.editAlarm : props.createAlarm;
