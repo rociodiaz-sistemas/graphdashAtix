@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import { Icon, Label, Menu, Table, Segment, Button, Header, Form, Input, Modal } from 'semantic-ui-react';
 export function EditCreateAlarmModal(props) {
-    debugger;
-    let label = props.isEdit ? 'Edit' : 'Create';
     let editCreate = props.isEdit ? props.editAlarm : props.createAlarm;
     return (
         <Modal onClose={() => props.closeModal()} open={props.isOpenModal}>
-            <Modal.Header>{label} Alarm '<i>{props.selectedAlarm.name}'</i></Modal.Header>
+            <Modal.Header>{props.label} Alarm <i>{props.selectedAlarm.name}</i></Modal.Header>
             <Modal.Content>
-                <Form onSubmit={(e) => editCreate({ inputs: e.target.elements, id: props.selectedAlarm.id })}>
+                <Form onSubmit={(e) => { editCreate(props.isEdit ? { inputs: e.target.elements, id: props.selectedAlarm.id} : e.target.elements)}}>
                     <Form.Field>
                         <label>Name</label>
                         <input required pattern="^[a-zA-Z0-9 ]*$" id="name" onInvalid={setCustomMessage} type="text" name='name' defaultValue={props.selectedAlarm.name} />
@@ -32,7 +30,7 @@ export function EditCreateAlarmModal(props) {
                         <label>Trigger Value</label>
                         <input id="triggerValue" min="0" step="1" pattern="\d+" type="number" name='triggerValue' defaultValue={props.selectedAlarm.triggerValue} />
                     </Form.Field>
-                    <Button loading={props.loadingAlarms} type='submit' color='green'>{label}</Button>
+                    <Button loading={props.loadingAlarms} type='submit' color='green'>{props.label}</Button>
                 </Form>
             </Modal.Content>
             <Modal.Actions>

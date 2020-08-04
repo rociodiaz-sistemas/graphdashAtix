@@ -19,8 +19,8 @@ export default class Alarms extends Component {
             <Segment style={{ minHeight: '250px' }} loading={this.props.loadingAlarms}>
                 {this.props.hasAlarms ?
                     <div>
-                        <AlarmsTable props={this.props} handleOpenModal={this.handleOpenModal} />
-                        <Button floated='right' onClick={() => this.handleOpenModal({ type: 'create' })} color='primary'> Add an alarm </Button>
+                        <AlarmsTable props={this.props} />
+                        <Button floated='right' onClick={() => this.props.openCreateModal()} color='primary'> Add an alarm </Button>
                     </div>
                     : <SegmentPlaceholder openModal={this.props.openCreateModal}></SegmentPlaceholder>}
                 <EditCreateAlarmModalContainer/>
@@ -30,7 +30,6 @@ export default class Alarms extends Component {
 }
 
 function AlarmsTable(_this) {
-    debugger;
     return (
         <Table celled>
             <Table.Header>
@@ -44,10 +43,10 @@ function AlarmsTable(_this) {
                 </Table.Row>
             </Table.Header>
 
-            <Table.Body contenteditable>
+            <Table.Body>
                 {_this.props.alarms.map((item, i) => {
                     return (
-                        <Table.Row contenteditable key={i}>
+                        <Table.Row key={i}>
                             <Table.Cell>{item.name}</Table.Cell>
                             <Table.Cell>{item.source}</Table.Cell>
                             <Table.Cell>{item.metric}</Table.Cell>
@@ -55,7 +54,7 @@ function AlarmsTable(_this) {
                             <Table.Cell>{item.triggerValue}</Table.Cell>
                             <Table.Cell>
                                 <Popup content='Double click to delete' trigger={<Button onDoubleClick={() => _this.props.deleteAlarm(item)}>Delete</Button>} />
-                                <Button onClick={() => _this.handleOpenModal({ alarm: item, type: 'edit' })}>Edit</Button>
+                                <Button onClick={() => _this.props.openEditModal(item)}>Edit</Button>
                                 <Button onClick={() => _this.props.pauseAlarm({ id: item.id, isPaused: !item.paused })} color={item.paused ? 'green' : 'red'} icon={item.paused ? 'play' : 'pause'} />
                             </Table.Cell>
                         </Table.Row>

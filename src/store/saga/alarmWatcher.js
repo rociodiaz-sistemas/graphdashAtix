@@ -1,6 +1,6 @@
 import { eventChannel } from 'redux-saga';
 import { all, call, put, take } from 'redux-saga/effects'
-import { SET_LOADING_ALARMS, SET_ALARMS, SET_ALARMS_ERROR, OPEN_MODAL } from '../actions/alarmActions';
+import { SET_LOADING_ALARMS, SET_ALARMS, SET_ALARMS_ERROR, OPEN_MODAL, CLOSE_MODAL } from '../actions/alarmActions';
 import { getMyAlarms, editMyAlarm, deleteMyAlarm, createMyAlarm, pauseMyAlarm } from '../../api/api';
 
 export function* getAlarms(action) {
@@ -57,7 +57,7 @@ export function* createAlarm(action) {
         yield put({ type: SET_ALARMS, payload: alarms.data });
         yield put({ type: SET_LOADING_ALARMS, payload: false });
         yield put({ type: SET_ALARMS_ERROR, payload: false });
-        yield put({ type: OPEN_MODAL, payload: {isOpen: false} });
+        yield put({ type: CLOSE_MODAL });
     } catch (e) {
         yield put({ type: SET_LOADING_ALARMS, payload: false });
         yield put({ type: SET_ALARMS_ERROR, payload: true });

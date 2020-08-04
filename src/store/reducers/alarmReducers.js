@@ -7,7 +7,7 @@ const initialState = {
     alarmCounter: 0,
     activatedNotes: false,
     isOpenModal: false,
-    selectedAlarm: { areYouSure: false },
+    selectedAlarm: {},
     isEdit: '',
 };
 
@@ -46,8 +46,8 @@ function alarm(state = initialState, action) {
             case OPEN_EDIT_MODAL:
             return {
                 ...state,
-                isOpenModal: action.payload.isOpen,
-                isEdit: action.payload.type == 'edit' ? true : false
+                isOpenModal: true,
+                isEdit: true
             }
             case OPEN_CREATE_MODAL:
             return {

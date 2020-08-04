@@ -19,7 +19,7 @@ export function editMyAlarm(payload) {
 
 export function createMyAlarm(payload) {
     debugger;
-    let response = axios.post(`https://5f23176a0e9f660016d88cc3.mockapi.io/api/graphdash/alarms/`, payload.alarm);
+    let response = axios.post(`https://5f23176a0e9f660016d88cc3.mockapi.io/api/graphdash/alarms/`, payload);
     return response;
 }
 

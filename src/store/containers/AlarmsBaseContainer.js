@@ -3,18 +3,19 @@ import { OPEN_MODAL, SET_SELECTED_ALARM, EDIT_ALARM, CREATE_ALARM, DELETE_ALARM,
 
 export const mapStateToProps = (state, ownProps) => {
     const { alarms } = state;
-    debugger;
     if (!alarms) return {};
 
     let myAlarms = alarms.alarms;
+    let isEdit = alarms.isEdit;
 
     return {
         alarms: myAlarms,
         loadingAlarms: alarms.loadingAlarms,
         isOpenModal: alarms.isOpenModal,
         selectedAlarm: alarms.selectedAlarm,
-        isEdit: alarms.isEdit,
-        hasAlarms: myAlarms && myAlarms.length > 0
+        isEdit: isEdit,
+        hasAlarms: myAlarms && myAlarms.length > 0,
+        label: isEdit ? 'Edit' : 'Create'
     }
         
 }
@@ -37,12 +38,13 @@ export const mapDispatchToProps = (dispatch, ownProps) => {
             dispatch({ type: SET_SELECTED_ALARM, payload: alarm })
         },
         editAlarm: (payload) => {
+            debugger;
             let alarm = formatInputs(payload.inputs);
             dispatch({ type: EDIT_ALARM, payload: { alarm: alarm, id: payload.id } })
         },
-        createAlarm: (payload) => {
-            let alarm = formatCreateInputs(payload.inputs);
-            dispatch({ type: CREATE_ALARM, payload: { alarm: alarm } })
+        createAlarm: (inputs) => {
+            let alarm = formatCreateInputs(inputs);
+            dispatch({ type: CREATE_ALARM, payload: alarm })
         },
         deleteAlarm: (payload) => {
             dispatch({ type: DELETE_ALARM, payload: payload });
