@@ -5,7 +5,7 @@ export function EditCreateAlarmModal(_this) {
     let label = _this.props.isEdit ? 'Edit' : 'Create';
     let editCreate = _this.props.isEdit ? _this.props.editAlarm : _this.props.createAlarm;
     return (
-        <Modal onClose={() => _this.handleOpenModal({})} open={_this.props.isOpenModal}>
+        <Modal onClose={() => _this.props.closeModal()} open={_this.props.isOpenModal}>
             <Modal.Header>{label} Alarm '<i>{_this.props.selectedAlarm.name}'</i></Modal.Header>
             <Modal.Content>
                 <Form onSubmit={(e) => editCreate({ inputs: e.target.elements, id: _this.props.selectedAlarm.id })}>
@@ -36,7 +36,7 @@ export function EditCreateAlarmModal(_this) {
                 </Form>
             </Modal.Content>
             <Modal.Actions>
-                <Button onClick={() => _this.handleOpenModal({})} color='red'>Cancel</Button>
+                <Button onClick={() => _this.props.closeModal()} color='red'>Cancel</Button>
             </Modal.Actions>
         </Modal>
     )

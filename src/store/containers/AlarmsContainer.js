@@ -3,7 +3,7 @@ import Dashboard from '../../components/dashboard/Dashboard';
 import { CREATE_WIDGET, GET_WIDGETS } from '../actions/widgetActions';
 import { hasNoWidgets, formatInputs, formatCreateInputs } from '../../utils/helpers';
 import Alarms from '../../components/alarms/Alarms';
-import { OPEN_MODAL, SET_SELECTED_ALARM, EDIT_ALARM, CREATE_ALARM, DELETE_ALARM, SET_COUNTER, PAUSE_ALARM } from '../actions/alarmActions';
+import { OPEN_MODAL, SET_SELECTED_ALARM, EDIT_ALARM, CREATE_ALARM, DELETE_ALARM, SET_COUNTER, PAUSE_ALARM, CLOSE_MODAL } from '../actions/alarmActions';
 
 const mapStateToProps = (state, ownProps) => {
     const { alarms } = state;
@@ -23,6 +23,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         openModal: (payload) => {
             dispatch({ type: OPEN_MODAL, payload: payload })
+        },
+        closeModal: () => {
+            dispatch({ type: CLOSE_MODAL })
         },
         setSelectedAlarm: (payload) => {
             dispatch({ type: SET_SELECTED_ALARM, payload: payload })

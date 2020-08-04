@@ -1,4 +1,4 @@
-import { SET_ALARMS, SET_LOADING_ALARMS, ACTIVATE_NOTIFICATION, REMOVE_NOTIFICATION, OPEN_MODAL, SET_SELECTED_ALARM, EDIT_ALARM, SET_COUNTER } from '../actions/alarmActions';
+import { SET_ALARMS, SET_LOADING_ALARMS, ACTIVATE_NOTIFICATION, REMOVE_NOTIFICATION, OPEN_MODAL, SET_SELECTED_ALARM, EDIT_ALARM, SET_COUNTER, CLOSE_MODAL } from '../actions/alarmActions';
 
 const initialState = {
     alarms: undefined,
@@ -7,7 +7,7 @@ const initialState = {
     alarmCounter: 0,
     activatedNotes: false,
     isOpenModal: false,
-    selectedAlarm: {areYouSure: false},
+    selectedAlarm: { areYouSure: false },
     isEdit: '',
 };
 
@@ -43,22 +43,16 @@ function alarm(state = initialState, action) {
                 isOpenModal: action.payload.isOpen,
                 isEdit: action.payload.type == 'edit' ? true : false
             }
-            case SET_SELECTED_ALARM:
+        case CLOSE_MODAL:
+            return {
+                ...state,
+                isOpenModal: false,
+            }
+        case SET_SELECTED_ALARM:
             return {
                 ...state,
                 selectedAlarm: action.payload
             }
-            case SET_COUNTER:
-                debugger;
-                return {
-                    ...state,
-                    selectedAlarm:{...state.selectedAlarm, areYouSure: action.payload }
-                }
-            // case EDIT_ALARM:
-            // return {
-            //     ...state,
-            //     selectedAlarm: action.payload
-            // }
         default:
             return state;
     }

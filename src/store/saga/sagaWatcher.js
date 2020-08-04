@@ -7,7 +7,6 @@ import { GET_ALARMS, SET_LOADING_ALARMS, SET_ALARMS, SET_ALARMS_ERROR, UPDATE_AL
 import { getMyAlarms, getMyWidgets } from '../../api/api';
 import { GET_INITIAL_INFO } from '../actions/sharedActions';
 
-
 function* SagaWatcher() {
     yield takeLatest(GET_WIDGETS, getWidgets);
     yield takeLatest(GET_ALARMS, getAlarms);
