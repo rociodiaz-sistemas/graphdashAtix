@@ -37,7 +37,6 @@ export const mapDispatchToProps = (dispatch, ownProps) => {
             dispatch({ type: SET_SELECTED_ALARM, payload: alarm })
         },
         editAlarm: (payload) => {
-            debugger;
             let alarm = formatInputs(payload.inputs);
             dispatch({ type: EDIT_ALARM, payload: { alarm: alarm, id: payload.id } })
         },

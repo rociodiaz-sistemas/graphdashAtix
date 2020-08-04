@@ -7,7 +7,7 @@ export function EditCreateAlarmModal(props) {
         <Modal onClose={() => props.closeModal()} open={props.isOpenModal}>
             <Modal.Header>{props.label} Alarm <i>{props.selectedAlarm.name}</i></Modal.Header>
             <Modal.Content>
-                <Form onSubmit={(e) => { debugger; editCreate(props.isEdit ? { inputs: e.target.elements, id: props.selectedAlarm.id } : e.target.elements) }}>
+                <Form onSubmit={(e) => { editCreate(props.isEdit ? { inputs: e.target.elements, id: props.selectedAlarm.id } : e.target.elements) }}>
                     <Form.Field>
                         <label>Name</label>
                         <input required pattern="^[a-zA-Z0-9 ]*$" id="name" onInvalid={setCustomMessage} onInput={unsetCustomMessage}type="text" name='name' defaultValue={props.selectedAlarm.name} />
