@@ -19,7 +19,7 @@ function alarm(state = initialState, action) {
                 alarms: action.payload,
                 notifications: action.payload.filter(alarm => alarm.status === true),
                 alarmCounter: action.payload.filter(alarm => alarm.status === true).length,
-                activatedNotes: action.payload.filter(alarm => alarm.status === true)
+                activatedNotes: action.payload.find(alarm => alarm.status === true).length > 0
             }
         case SET_LOADING_ALARMS:
             return {

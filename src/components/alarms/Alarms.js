@@ -17,10 +17,12 @@ export default class Alarms extends Component {
         return (
             <Segment style={{ minHeight: '250px' }} loading={this.props.loadingAlarms}>
                 {this.props.alarms && this.props.alarms.length > 0 ?
-                    <AlarmsTable props={this.props} handleOpenModal={this.handleOpenModal} />
+                    <div>
+                        <AlarmsTable props={this.props} handleOpenModal={this.handleOpenModal} />
+                        <Button floated='right' onClick={() => this.handleOpenModal({ type: 'create' })} color='primary'> Add an alarm </Button>
+                    </div>
                     : <SegmentPlaceholder handleOpenModal={this.handleOpenModal}></SegmentPlaceholder>}
                 <EditCreateAlarmModal props={this.props} handleOpenModal={this.handleOpenModal} />
-                <Button floated='right' onClick={() => this.handleOpenModal({ type: 'create' })} color='primary'> Add an alarm </Button>
             </Segment>
         );
     }
@@ -53,7 +55,7 @@ function AlarmsTable(_this) {
                             <Table.Cell>
                                 <Popup content='Double click to delete' trigger={<Button onDoubleClick={() => _this.props.deleteAlarm(item)}>Delete</Button>} />
                                 <Button onClick={() => _this.handleOpenModal({ alarm: item, type: 'edit' })}>Edit</Button>
-                                <Button onClick={() => _this.props.pauseAlarm({id: item.id, isPaused: !item.paused})} color={item.paused ? 'green' : 'red'} icon={item.paused ? 'play' : 'pause'} />
+                                <Button onClick={() => _this.props.pauseAlarm({ id: item.id, isPaused: !item.paused })} color={item.paused ? 'green' : 'red'} icon={item.paused ? 'play' : 'pause'} />
                             </Table.Cell>
                         </Table.Row>
                     );
