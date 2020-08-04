@@ -54,6 +54,7 @@ function alarm(state = initialState, action) {
             return {
                 ...state,
                 isOpenModal: false,
+                selectedAlarm: {}
             }
         case SET_SELECTED_ALARM:
             return {
