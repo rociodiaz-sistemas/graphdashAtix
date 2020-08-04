@@ -8,19 +8,24 @@ import { Route, Switch } from 'react-router' // react-router v4/v5
 import LayoutContainer from './components/shared/LayoutContainer.js';
 import './App.css';
 import { GET_WIDGETS } from './store/actions/widgetActions';
-import { GET_ALARMS } from './store/actions/alarmActions';
+import { GET_ALARMS, UPDATE_ALARMS } from './store/actions/alarmActions';
 import { GET_INITIAL_INFO } from './store/actions/sharedActions';
 
 export default class App extends Component {
   history = createBrowserHistory();
   store = configureStore(this.history);
-  intervalID;
 
   componentDidMount() {
-    debugger;
     this.store.dispatch({
       type: GET_INITIAL_INFO,
     });
+
+    this.timerID = setInterval(
+      () => this.store.dispatch({
+        type: UPDATE_ALARMS,
+      }),
+      3000
+    );
   }
 
   componentWillUnmount() {
@@ -28,7 +33,7 @@ export default class App extends Component {
       stop getData() from continuing to run even
       after unmounting this component
     */
-    clearInterval(this.intervalID);
+    clearInterval(this.timerID);
   }
 
   render() {

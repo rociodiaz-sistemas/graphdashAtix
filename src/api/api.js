@@ -12,16 +12,6 @@ export function getMyWidgets(payload) {
     return response
 }
 
-export function updateAlarms(payload) {
-    //update random alarm 
-    let randomBoolean = Math.round(Math.random() * 1) ? true : false;
-    let response = axios.put(`https://5f23176a0e9f660016d88cc3.mockapi.io/api/graphdash/alarms/${[1, 2].sort(function () {
-        return .3 - Math.random();
-    })}`, {status: randomBoolean});
-    console.log(response);
-    return response
-}
-
 export function editMyAlarm(payload) {
     let response = axios.put(`https://5f23176a0e9f660016d88cc3.mockapi.io/api/graphdash/alarms/${payload.id}`, payload.alarm);
     return response;

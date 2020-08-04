@@ -5,13 +5,24 @@ import { getMyAlarms, editMyAlarm, deleteMyAlarm, createMyAlarm, pauseMyAlarm } 
 
 export function* getAlarms(action) {
     try {
-        debugger;
+        yield put({ type: SET_LOADING_ALARMS, payload: true });
         const alarms = yield call(getMyAlarms, action.payload);
         yield put({ type: SET_ALARMS, payload: alarms.data});
         yield put({ type: SET_LOADING_ALARMS, payload: false });
         yield put({ type: SET_ALARMS_ERROR, payload: false });
     } catch (e) {
         yield put({ type: SET_LOADING_ALARMS, payload: false });
+        yield put({ type: SET_ALARMS_ERROR, payload: true });
+        console.log(e);
+    }
+}
+
+export function* updateAlarms(action) {
+    try {
+        const alarms = yield call(getMyAlarms, action.payload);
+        yield put({ type: SET_ALARMS, payload: alarms.data});
+        yield put({ type: SET_ALARMS_ERROR, payload: false });
+    } catch (e) {
         yield put({ type: SET_ALARMS_ERROR, payload: true });
         console.log(e);
     }
@@ -55,9 +66,7 @@ export function* createAlarm(action) {
 }
 
 export function* deleteAlarm(action) {
-    debugger;
     try {
-        debugger;
         yield put({ type: SET_LOADING_ALARMS, payload: true });
         const deletedAlarm = yield call(deleteMyAlarm, action.payload);
         console.log(deletedAlarm);

@@ -36,7 +36,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             dispatch({ type: CREATE_ALARM, payload: { alarm: alarm } })
         },
         deleteAlarm: (payload) => {
-            debugger;
             dispatch({ type: DELETE_ALARM, payload: payload });
         },
         pauseAlarm: (payload) => {
