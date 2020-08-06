@@ -1,7 +1,5 @@
 import React from 'react';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Card } from 'semantic-ui-react';
-// import axios from 'axios';
 
 export default function Widgets(props) {
     return (
