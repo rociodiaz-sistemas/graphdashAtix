@@ -23,5 +23,4 @@ const LayoutContainer = () => (
         </Grid>
     </Container>
 )
-
 export default LayoutContainer;
